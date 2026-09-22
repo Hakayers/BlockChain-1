@@ -15,6 +15,7 @@ class Block:
         self.timestamp = datetime.utcnow().isoformat()
         self.data = data
         self.previous_hash = previous_hash
+        self.nonce = 0
         self.hash = self.calculate_hash()
 
     def calculate_hash(self) -> str:
@@ -23,7 +24,8 @@ class Block:
             "index": self.index,
             "timestamp": self.timestamp,
             "data": self.data,
-            "previous_hash": self.previous_hash
+            "previous_hash": self.previous_hash,
+            "nonce": self.nonce
         }
 
         encoded = json.dumps(
